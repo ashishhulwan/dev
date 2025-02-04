@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>Dimension by HTML5 UP</title>
+	<title>Ashish Hulwan | Home</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -17,7 +17,90 @@
 </head>
 
 <body class="is-preload">
+	<style>
+		#chartdiv {
+			width: 100%;
+			height: 500px;
+			z-index: 1000;
+			position: relative;
+		}
+	</style>
+	<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/wc.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
+	<!-- Chart code -->
+	<script>
+		am5.ready(function () {
+
+			// Create root element
+			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+			var root = am5.Root.new("chartdiv");
+
+
+			// Set themes
+			// https://www.amcharts.com/docs/v5/concepts/themes/
+			root.setThemes([
+				am5themes_Animated.new(root)
+			]);
+
+
+			// Add series
+			// https://www.amcharts.com/docs/v5/charts/word-cloud/
+			var series = root.container.children.push(am5wc.WordCloud.new(root, {
+				categoryField: "tag",
+				valueField: "weight",
+				maxFontSize: am5.percent(25)
+			}));
+
+			// Configure labels
+			series.labels.template.setAll({
+				fontFamily: "Courier New",
+				color: "white"
+			});
+
+
+			setInterval(function () {
+				am5.array.each(series.dataItems, function (dataItem) {
+					var value = Math.random() * 65;
+					value = value - Math.random() * value;
+					dataItem.set("value", value);
+					dataItem.set("valueWorking", value);
+				})
+			}, 5000)
+
+			series.text = "Angular19 TypeScript JavaScript WebPack Dart Flutter Ionic Git JIRA SourceTree VSCode CodeCommit SVN AngularCLI Postman Xcode Wix Figma MongoDB GitLab";
+			// Data from:
+			// https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-programming-scripting-and-markup-languages
+			series.labels.fill = "#FFFFFF"
+			series.data.setAll([
+				{ tag: "Angular 19", weight: 60, fill: "#FF0000" },
+				{ tag: "Material Design", weight: 40, fill: "#FFFFFF" },
+				{ tag: "HTML", weight: 55, fill: "#FFFFFF" },
+				{ tag: "CSS/SCSS", weight: 50, fill: "#FFFFFF" },
+				{ tag: "Python", weight: 35, fill: "#FFFFFF" },
+				{ tag: "TypeScript", weight: 55, fill: "#FFFFFF" },
+				{ tag: "JavaScript", weight: 45, fill: "#FFFFFF" },
+				{ tag: "Git", weight: 48, fill: "#FFFFFF" },
+				{ tag: "WebPack", weight: 32, fill: "#FFFFFF" },
+				{ tag: "JIRA", weight: 34, fill: "#FFFFFF" },
+				{ tag: "VS Code", weight: 46, fill: "#FFFFFF" },
+				{ tag: "SVN", weight: 29, fill: "#FFFFFF" },
+				{ tag: "Angular CLI", weight: 31, fill: "#FFFFFF" },
+				{ tag: "Postman", weight: 25, fill: "#FFFFFF" },
+				{ tag: "Figma", weight: 25, fill: "#FFFFFF" },
+				{ tag: "MongoDB", weight: 26, fill: "#FFFFFF" },
+				{ tag: "GitLab", weight: 29, fill: "#FFFFFF" },
+				{ tag: "Code Commit", weight: 25, fill: "#FFFFFF" },
+				{ tag: "SourceTree", weight: 25, fill: "#FFFFFF" },
+				{ tag: "Ionic", weight: 25, fill: "#FFFFFF" },
+				{ tag: "Flutter", weight: 25, fill: "#FFFFFF" },
+				{ tag: "Dart", weight: 25, fill: "#FFFFFF" },
+			]);
+
+		}); // end am5.ready()
+	</script>
+	<!-- <div id="chartdiv" ></div> -->
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -40,6 +123,7 @@
 					<li><a href="#intro">Intro</a></li>
 					<li><a href="#techstack">Tech Stack</a></li>
 					<li><a href="#projects">Projects</a></li>
+					<li><a href="#skills" (click)="window.reload()">Skills</a></li>
 					<li><a href="#contact">Contact</a></li>
 					<!-- <li><a href="#elements">Elements</a></li> -->
 				</ul>
@@ -52,14 +136,25 @@
 			<!-- Intro -->
 			<article id="intro">
 				<h2 class="major">Intro</h2>
-				<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-				<p>I'm a Frontend Software Engineer based out of Pune, who loves to learn and create things
+				<div class="image main"><img src="images/intro.webp" alt="" style="height: 60%;" /></div>
+				<p>I'm a Frontend Software Engineer based out of Pune, MH India that loves to learn and create things
 					that live on the
-					internet! I believe that we can use what we love to do to help others and make the world a better
-					place. I am a Pune University alum that is skilled in Angular 2 and above frameworks, Type Script,
-					Node.js, JavaScript, HTML, and CSS.
-					Check out my work
-					and feel free to reach out!</p>
+					internet!</p>
+				<p>A seasoned Angular developer with more than 8 years of experience designing and building
+					high-performance web
+					applications. I
+					specialize in creating dynamic, user-centric interfaces using Angular, TypeScript, HTML, and CSS. My
+					expertise spans
+					across the entire development lifecycle—from conceptualization and architecture to deployment and
+					maintenance—ensuring
+					robust, scalable, and maintainable solutions. I have a proven track record in utilizing modern tools
+					such as RxJS,
+					Angular Material, Signals and Angular CLI to streamline development processes and enhance user
+					experiences.
+					Passionate about
+					continuous learning and agile methodologies, I excel at collaborating with cross-functional teams,
+					mentoring junior
+					developers, and driving innovative approaches that align with business goals.</p>
 				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent
 					taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique
 					libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut
@@ -71,26 +166,134 @@
 
 			<!-- Work -->
 			<article id="techstack">
-				<h2 class="major">Tesh Stack</h2>
+				<h2 class="major">Tech Stack</h2>
 				<h3>Angular</h3>
-				<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-				<p>I'm a Full-Stack Software Engineer based out of Houston, TX that loves to learn and create things
-					that live on the
-					internet! I believe that we can use what we love to do to help others and make the world a better
-					place. I am a Flatiron
-					School alum that is skilled in Ruby on Rails, Ruby, React, JavaScript, Sinatra, SQL, HTML, and CSS.
-					Check out my work
-					and feel free to reach out!</p>
-				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent
-									taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique
-									libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut
-									ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor.
-									Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique
-									senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus.
-									Pellentesque aliquam maximus risus, vel sed vehicula.</p> -->
-				<hr>
+				<span class="image main"><img src="images/angular-logo.png" alt="" /></span>
+				<p>
+					I leverage the Angular CLI for efficient project scaffolding and development, and I implement best
+					practices in
+					performance optimization, including lazy loading, code splitting, and server-side rendering with
+					Angular Universal. With
+					a strong background in HTML5, CSS3, and RESTful API integration, I maintain clean, modular, and
+					maintainable code while
+					consistently delivering seamless user experiences.
+				</p>
+				<p>
+					Whether working on enterprise-level solutions or innovative startup projects, I continuously strive
+					to adopt
+					cutting-edge technologies and agile methodologies to drive business success.
+				</p>
+
+				<ol>
+					<li><b> Frontend Framework</b>
+						<ul>
+							<li>
+								Angular (Latest version, e.g., Angular 19)
+							</li>
+							<li>
+								TypeScript (Strongly typed JavaScript)
+							</li>
+						</ul>
+					</li>
+					<li><b> UI Libraries & Components</b>
+						<ul>
+							<li>
+								Angular Material (Official UI component library)
+							</li>
+							<li>
+								Angular Theming
+							</li>
+							<li>
+								Bootstrap (CSS framework for responsive design)
+							</li>
+							<li>
+								Ag Grid (Rich table library)
+							</li>
+						</ul>
+					</li>
+					<li><b> State Management</b>
+						<ul>
+							<li>
+								RxJS (Reactive programming)
+							</li>
+							<li>
+								NgRx (Redux pattern for Angular)
+							</li>
+
+						</ul>
+					</li>
+					<li><b> API Handling & Data Fetching</b>
+						<ul>
+							<li>
+								HTTPClient (Built-in Angular service)
+							</li>
+							<li>
+								GraphQL (Apollo Angular) (For GraphQL API communication)
+							</li>
+
+						</ul>
+					</li>
+					<li><b> Build & Development Tools</b>
+						<ul>
+							<li>
+								Angular CLI (Command Line Interface)
+							</li>
+							<li>
+								Webpack (Module bundler)
+							</li>
+							<li>
+								ESLint / TSLint (Linting and code quality)
+							</li>
+
+						</ul>
+					</li>
+					<li><b> Authentication & Security</b>
+						<ul>
+							<li>
+								JWT (JSON Web Token)
+							</li>
+							<li>
+								Firebase Authentication
+							</li>
+							<li>
+								AWS Authentication
+							</li>
+							<li>
+								SSO based SAML Authentication
+							</li>
+						</ul>
+					</li>
+					<li><b> Performance Optimization</b>
+						<ul>
+							<li>
+								Lazy Loading Modules
+							</li>
+							<li>
+								Code Splitting
+							</li>
+							<li>
+								Server-Side Rendering (Angular Universal)
+							</li>
+							<li>
+								Standalone Components
+							</li>
+						</ul>
+					</li>
+					<li><b> Deployment & CI/CD</b>
+						<ul>
+							<li>
+								GitHub Actions / GitLab CI/CD / Jenkins (CI/CD automation)
+							</li>
+							<li>
+								AWS / Firebase (Hosting and cloud services)
+							</li>
+						</ul>
+					</li>
+				</ol>
+
+				<!-- <hr> -->
 				<!-- <h2 class="major">Intro</h2> -->
-				<h3>Flutter</h3>
+				<!-- <h3>Flutter</h3>
 				<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 				<p>I'm a Full-Stack Software Engineer based out of Houston, TX that loves to learn and create things
 					that live on the
@@ -98,14 +301,65 @@
 					place. I am a Flatiron
 					School alum that is skilled in Ruby on Rails, Ruby, React, JavaScript, Sinatra, SQL, HTML, and CSS.
 					Check out my work
-					and feel free to reach out!</p>
+					and feel free to reach out!</p> -->
 			</article>
 
 			<!-- About -->
 			<article id="projects">
 				<h2 class="major">Projects</h2>
-				<h3>Finbingo</h3>
+				<h3>FortiCART</h3>
 				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+				<p>FortiCART is Continous Automated Red Teaming, a SaaS-based service, includes: All manual RED Teaming
+					activities we are trying to automate those stuff to reduce time.
+				<ul>
+					<li>This is under development and we are using all the new cutting edge technologies like Angular
+						19, Angular material design 3</li>
+					<li>Angular design token</li>
+					<li>Multi theaming light and dark mode</li>
+					<li>Angular Signals, Computed Signals, Linked Signals, Resource etc.</li>
+				</ul>
+				</p>
+				<hr>
+				<h3>FortiRecon</h3>
+				<span class="image main"><img src="images/recon.png" alt="" /></span>
+				<p>FortiRecon Digital Risk Protection (DRP), a SaaS-based service, includes: External Attack Surface
+					Management, Brand
+					Protection,
+					and Adversary Centric Intelligence. Part of the Fortinet SecOps Platform, FortiRecon shows what
+					adversaries are seeing,
+					doing, and
+					planning to help counter attacks at the reconnaissance phase and significantly reduce the risk,
+					time, and cost of
+					later-stage threat
+					mitigation.
+				<ul>
+					<li>Designed and developed multiple internal tools to automate FortiRecon customer facing
+						activities.</li>
+					<li>Using latest Angular version 17 developed Report Notifier, EASM lite discovery Sales Portal,
+						Researcher and Analyst
+						Workbench
+						etc internal portals.</li>
+					<li>Created user intuitive dashboard using D3 charts.</li>
+					<li>Build RESTful UI tool to create a Admin panel for various project from swagger documentation.
+						This has reduced the time
+						to
+						develop multiple Admin panels. And also avoid the risk of using swagger for CRUD operation</li>
+				</ul>
+				</p>
+				<hr>
+				<h3>Taxbuddy</h3>
+				<span class="image main"><img src="images/taxbuddy.png" alt="" /></span>
+				<p>Taxbuddy is developed with a vision to enable customers who are salaried and small business classes
+					to file their taxes smartly and effortlessly. If you are a regular tax payer looking for the most
+					efficient way to file your
+					taxes and handling further scrutiny from the IT Department, without having to spend valuable time
+					and substantial money, Taxbuddy is
+					your perfect solution. It takes care of the three pivotal aspects of tax planning – Tax Filing, Tax
+					Notice Management & Tax Saving.
+				</p>
+				<hr>
+				<h3>Finbingo</h3>
+				<span class="image main"><img src="images/finbingo_cover.webp" alt="" /></span>
 				<p>Finbingo is a highly specialized financial advisory platform that is aimed at achieving digital
 					financial planning with
 					minimal
@@ -125,17 +379,7 @@
 					customers
 					of any income class.</p>
 				<hr>
-				<h3>Taxbuddy</h3>
-				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-				<p>Taxbuddy is developed with a vision to enable customers who are salaried and small business classes
-					to file their taxes smartly and effortlessly. If you are a regular tax payer looking for the most
-					efficient way to file your
-					taxes and handling further scrutiny from the IT Department, without having to spend valuable time
-					and substantial money, Taxbuddy is
-					your perfect solution. It takes care of the three pivotal aspects of tax planning – Tax Filing, Tax
-					Notice Management & Tax Saving.
-				</p>
-				<hr>
+
 				<h3>CIPL</h3>
 				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 				<p>Chowledge Industries Private Limited
@@ -145,14 +389,42 @@
 					admin panel to see
 					various reports and manage their master data as well as Employees and car data against the multiple
 					dealers.</p>
-				<hr>
+				<!-- <hr>
 				<h3>RTS</h3>
 				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 				<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at
 					eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula
 					lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada
 					fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum
-					dolor sit amet.</p>
+					dolor sit amet.</p> -->
+			</article>
+
+			<!-- Skills -->
+			<article id="skills">
+				<h2 class="major">Skills</h2>
+				<div id="chartdiv"></div>
+
+				<!-- <form method="post" action="#">
+					<div class="fields">
+						<div class="field half">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" placeholder="John Doe" />
+						</div>
+						<div class="field half">
+							<label for="email">Email</label>
+							<input type="text" name="email" id="email" placeholder="johndoe@email.com" />
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="4" placeholder="Share yout thoughts"></textarea>
+						</div>
+					</div>
+					<ul class="actions">
+						<li><input type="submit" value="Send Message" class="primary" /></li>
+						<li><input type="reset" value="Reset" /></li>
+					</ul>
+				</form> -->
+
 			</article>
 
 			<!-- Contact -->
@@ -179,12 +451,15 @@
 					</ul>
 				</form>
 				<ul class="icons">
-					<li><a href="https://linkedin.com/in/ashishhulwan" class="icon brands fa-linkedin"><span
-								class="label">Linked In</span></a></li>
-					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="https://linkedin.com/in/ashishhulwan" target="_blank"
+							class="icon brands fa-linkedin"><span class="label">Linked In</span></a></li>
+					<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li> -->
+					<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+
+					<li><a href="https://github.com/ashishhulwan" target="_blank" class="icon brands fa-github"><span
+								class="label">GitHub</span></a></li>
+					<li><a href="https://www.instagram.com/mr_mastermind28" target="_blank"
+							class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 				</ul>
 			</article>
 
@@ -442,7 +717,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- Footer -->
 		<footer id="footer">
-			<p class="copyright">&copy;2021 AshishHulwan.dev</p>
+			<p class="copyright">&copy;2025 AshishHulwan.dev</p>
 		</footer>
 
 	</div>
